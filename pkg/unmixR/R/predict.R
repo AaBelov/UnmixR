@@ -8,8 +8,16 @@
     endmembers <- as.matrix (endmembers)
   endmembers <- t (endmembers)
 
+  #   t(apply(newdata, 1, function(spectrum) {
+  #     nnls(endmembers, spectrum)$x
+  #   }))
+  #solves least squares problem ||Ax - b||^2
+  #with Ex = f and Gx >= h constraints
+  E = rep(1, ncol(endmembers))
+  G = diag(ncol(endmembers))
+  H = rep(0, ncol(endmembers))
   t(apply(newdata, 1, function(spectrum) {
-    nnls(endmembers, spectrum)$x
+      lsei(A = endmembers, B = spectrum, E = E, F = 1, G = G, H = H)$X
   }))
 }
 

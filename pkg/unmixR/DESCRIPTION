@@ -12,7 +12,8 @@ License: GPL (>= 3)
 Depends:
     hyperSpec,
     MASS,
-    nnls
+    nnls,
+    limSolve
 Suggests:
     knitr
 Imports:
