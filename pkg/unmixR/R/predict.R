@@ -9,7 +9,7 @@
   endmembers <- t (endmembers)
 
   t(apply(newdata, 1, function(spectrum) {
-    nnls(endmembers, spectrum)$x
+    lsei(endmembers, spectrum)
   }))
 }
 
